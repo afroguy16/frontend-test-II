@@ -44,6 +44,4 @@ testem.log
 Thumbs.db
 
 # Others
-/.firebase
-.gitignore
-/src/app/api
+/src/app/api.ts
