@@ -45,3 +45,4 @@ Thumbs.db
 
 # Others
 /src/app/api.ts
+.firebase/*
