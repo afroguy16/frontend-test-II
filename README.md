@@ -1,27 +1,32 @@
-# GiphyChat
+## Front-end Developer Test
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
+### Devcenter Frontend Developer Test II
 
-## Development server
+The purpose of this test is not only to quickly gauge an applicant's abilities with working with APIs, but also their approach to development.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Applicants may use whatever frontend techniques they want to achieve the outcome.
 
-## Code scaffolding
+## Task
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+* Using the Spotify API https://developer.spotify.com/web-api/ - Given any particular artist, get their first 10 related artists and list their similar top songs.
 
-## Build
+* Using the Giphy API https://developers.giphy.com/docs/ - Write a chat input that takes a command, converts the ensuing string into a gif (Like in Slack) and adds it to the conversation
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+## How to complete the task
 
-## Running unit tests
+1. Fork this repository into your own public repo.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+2. Complete the project and commit your work. Send the URL of your own repository to @seun on the Slack here bit.ly/dcs-slack.
 
-## Running end-to-end tests
+## Show your working
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+If you choose to use build tools to compile your CSS and Javascript (such as SASS of Coffescript) please include the original files as well. You may update this README file outlining the details of what tools you have used.
 
-## Further help
+## Clean code
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+This fictitious project is part of a larger plan to reuse templates for multiple properties. When authoring your CSS ensure that it is easy for another developer to find and change things such as fonts and colours.
+
+
+## Good luck!
+
+We look forward to seeing what you can do. Remember, although it is a test, there are no specific right or wrong answers that we are looking for - just do the job as best you can. Any questions - create an issue in the panel on the right (requires a Github account).
