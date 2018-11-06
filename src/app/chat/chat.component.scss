@@ -1,0 +1,221 @@
+@import "~styles.scss";
+
+.chat-wrapper {
+	height: calc(100vh - 140px);
+	overflow-y: scroll;
+	background: #F2FFFF;
+
+	.messages {
+		padding: 20px;
+		
+		ul {
+			padding: 0;
+			li {
+				list-style-type: none;
+				p {
+					background: #FFFFFF;
+					padding: 10px;
+					border-radius: 10px;
+					box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+					margin-bottom: 10px;
+					.message {
+						margin-right: 40px;
+					}
+					.messageTime {
+						font-size: 0.6em;
+					}
+
+					&.messageWithImage {
+						.message {
+							max-height: 200px;
+							margin-right: 0;
+							img {
+								max-width: 100%;
+								max-height: 200px;
+							}
+						}
+						.messageTime {
+							margin-left: -40px;
+							color: #FFFFFF;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.chat-form {
+	height: 80px;
+	background: white;
+	// border: 1px solid gray;
+	z-index: 999;
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+
+	.messageInput {
+		position: absolute;
+		height: 100%;
+
+		input {
+			height: 100%;
+		}
+
+		button {
+			padding-left: 40px;
+			padding-right: 40px;
+		}
+	}
+}
+
+.gyWrapper {
+	height: 80px;
+	background: #F2FFFF;
+	// border: 1px solid gray;
+	z-index: 999;
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+
+	.gyPictures {
+		position: absolute;
+		height: 220px;
+		width: 100%;
+		background: #FFFFFF;
+		bottom: 80px;
+		transition: all 0.5s linear;
+		padding: 20px;
+
+		&.hideGyPictures {
+			bottom: -220px;
+		}
+
+		form {
+			span {
+				margin-right: 20px;
+				img {
+					height: 120px;
+				}
+			}
+
+			.input-hidden {
+			  position: absolute;
+			  left: -9999px;
+			}
+
+			input[type=radio]:checked + label>img {
+			  border: 1px solid #fff;
+			  box-shadow: 0 0 3px 3px #090;
+			}
+		}
+	}
+
+	.messageInput {
+		position: absolute;
+		bottom: 0;
+		height: 80px;
+
+		input {
+			height: 80px;
+		}
+
+		button {
+			padding-left: 40px;
+			padding-right: 40px;
+
+			&.cancelButton {
+				padding-left: 10px;
+				padding-right: 10px;
+			}
+		}
+	}
+}
+
+// Mobile phone styles
+@include breakpoint(mobile) {
+	:host {
+		font-size: 12px;
+	}
+
+	.chat-wrapper {
+		height: calc(100vh - 100px);
+	}
+
+	.chat-form {
+		height: 40px;
+
+		.messageInput {
+			input, button {
+				font-size: 12px;
+			}
+
+			button {
+				padding: 10px;
+
+				&.sendButton {
+					padding-right: 20px;
+					padding-left: 20px;
+				}
+			}
+		}
+	}
+	.gyWrapper {
+		height: 80px;
+
+		.gyPictures {
+			position: absolute;
+			height: 300px;
+			width: 100%;
+			background: #FFFFFF;
+			bottom: 40px;
+			transition: all 0.5s linear;
+			padding: 20px;
+
+			&.hideGyPictures {
+				bottom: -300px;
+			}
+
+			form {
+				span {
+					margin-right: 20px;
+					img {
+						height: 80px;
+					}
+				}
+
+				.input-hidden {
+				  position: absolute;
+				  left: -9999px;
+				}
+
+				input[type=radio]:checked + label>img {
+				  border: 1px solid #fff;
+				  box-shadow: 0 0 3px 3px #090;
+				}
+			}
+		}
+
+		.messageInput {
+			position: absolute;
+			bottom: 0;
+			height: 40px;
+			input, button {
+				font-size: 12px;
+			}
+
+			input {
+				height: 40px;
+			}
+
+			button {
+				padding-left: 10px;
+				padding-right: 10px;
+
+				&.cancelButton {
+					padding-left: 5px;
+					padding-right: 5px;
+				}
+			}
+		}
+	}
+}

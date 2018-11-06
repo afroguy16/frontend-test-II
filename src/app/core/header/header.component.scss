@@ -1,0 +1,45 @@
+@import "~styles.scss";
+
+nav {
+	color: #FFFFFF;
+	height: 60px;
+	background: $gychat-primary;
+	padding-left: 20px;
+	padding-right: 20px;
+	box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+
+	.left, .right {
+		width: 50%;
+	}
+
+	.left {
+		.gyChatBrandIcon {
+			font-size: 1.25em;
+			margin-bottom: 0;
+
+			a {
+				color: #FFFFFF;
+				text-decoration: none;
+				
+				&:hover {
+					cursor: pointer;
+				}
+			}
+		}
+	}
+
+	.right {
+		p {
+			margin-bottom: 0;
+
+			.authLink {
+				a {
+					&:hover {
+						cursor: pointer;
+						color: $gychat-accent;
+					}
+				}
+			}
+		}
+	}
+}

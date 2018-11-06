@@ -1,0 +1,76 @@
+<div class="chat-wrapper">
+	<div class="messages d-flex flex-column justify-content-end">
+		<ul>
+			<li *ngFor="let message of messages">
+				<p class="d-inline-flex messageWithText" *ngIf="message.messageText">
+					<span class="message align-self-end">{{ message.messageText }}</span>
+					<span class="messageTime align-self-end">{{ message.messageDate | date:'shortTime' }}</span>
+				</p>
+				<p class="d-inline-flex messageWithImage" *ngIf="message.messageImage">
+					<span class="message align-self-end" ><img class="img-fluid" src="{{ message.messageImage.selectedImage }}" alt="{{ message.messageImage.title }}"></span>
+					<span class="messageTime align-self-end">{{ message.messageDate | date:'shortTime' }}</span>
+				</p>
+			</li>
+		</ul>
+	</div>
+</div>
+<div class="chat-form">
+	<form (ngSubmit)="onSubmitText(f)" #f="ngForm" *ngIf="textFormOn">
+		<div class="input-group messageInput">
+		  <input type="text" class="form-control" placeholder="Type a message" aria-label="Message text" aria-describedby="basic-addon2" name="messageTextInput" ngModel required>
+		  <div class="input-group-append">
+		    <button
+		    	class="btn btn-outline-secondary giphyButton"
+		    	type="button" (click)="giphySearchFormSwitch();">
+		    	+ Giphy
+		    </button>
+		    <button class="btn button-primary sendButton" type="submit" [disabled]="!f.valid">Send</button>
+		  </div>
+		</div>
+	</form>
+</div>
+<div class="gyWrapper" *ngIf="giphySearchFormOn">
+	<div id="gyPicturesId" class="gyPictures hideGyPictures">
+		<form class="gyPictureSelectForm" (ngSubmit)="onSubMitGiphy(cF);toggleGiphyPicturesActive('gyPicturesId');giphySearchButtonToggle();textFormSwitch()" #cF="ngForm" >
+			<span *ngFor="let gyImage of gyImages">
+				<input 
+				  type="radio" name="selectedImage" 
+				  id="{{ gyImage.imageSlug }}" value="{{ gyImage.imageUrl }}" class="input-hidden" ngModel/>
+				<label for="{{ gyImage.imageSlug }}">
+				  <img 
+				    src="{{ gyImage.imageUrl }}" 
+				    alt="{{ gyImage.imageTitle }}" />
+				</label>
+			</span>
+			<button class="btn button-primary sendButton" type="submit" [disabled]="!cF.valid">Send</button>
+		</form>
+	</div>
+	<form (ngSubmit)="onGiphySearchSubmit(sF)" #sF="ngForm" >
+		<div class="input-group messageInput">
+		  <input type="text" class="form-control" placeholder="Search for GIF e.g 'happy'" aria-label="Search Giphy Image" aria-describedby="basic-addon2" name="giphyImageSearch" ngModel required>
+		  <div class="input-group-append">
+		    <button
+		    	class="btn btn-outline-secondary giphyButton"
+		    	type="submit"
+		    	*ngIf="giphySearchButton"
+		    	[disabled]="!sF.valid">
+		    	Search Giphy
+			</button>
+			<button
+		    	class="btn btn-danger giphyButton cancelButton"
+		    	type="button"
+		    	(click)="textFormSwitch()"
+		    	*ngIf="giphySearchButton">
+		    	X
+			</button>
+			<button
+		    	class="btn btn-outline-secondary giphyButton"
+		    	type="button"
+		    	(click)="textFormSwitch();giphySearchButtonToggle();clearGiphyImages()"
+		    	*ngIf="!giphySearchButton">
+		    	- Giphy
+			</button>
+		  </div>
+		</div>
+	</form>
+</div>
