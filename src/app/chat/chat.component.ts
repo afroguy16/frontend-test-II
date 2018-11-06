@@ -4,6 +4,7 @@ import * as Giphy from 'giphy-js-sdk-core';
 
 import { Message } from './message.model';
 import { GiphyImage } from './giphy-image.model';
+import * as API from '../api';
 
 @Component({
   selector: 'app-chat',
@@ -15,7 +16,7 @@ export class ChatComponent implements OnInit {
   textFormOn = true;
   giphySearchButton = true;
   GphApiClient = Giphy;
-  gyClient = this.GphApiClient('YwPcaq668yJqjvRHSlslfHaIuA6K3uRK');
+  gyClient = this.GphApiClient(API.key);
   gyImages: GiphyImage[] = [];
 
   messages: Message[] = []; 
