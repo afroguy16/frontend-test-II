@@ -43,3 +43,38 @@ nav {
 		}
 	}
 }
+
+.loginModal {
+	.close-button {
+		button {
+			height: 30px;
+		    width: 30px;
+		    background: $gychat-accent;
+		    opacity: 1;
+		    border-radius: 50%;
+		    margin-top: -15px;
+		    margin-right: -20px;
+
+		    &:hover {
+		    	opacity: 0.5;
+		    }
+		}
+	}
+	.modal-body {
+		p {
+			text-align: center;
+		}
+	}
+}
+
+@include breakpoint(mobile) {
+	.loginModal {
+		.close-button {
+			button {
+				margin-top: 0;
+				margin-right: 0;
+			}
+
+		}
+	}
+}

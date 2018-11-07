@@ -3,20 +3,20 @@
 		<h1 class="gyChatBrandIcon"><a routerLink="/">GiphyChat</a></h1>
 	</div>
 	<div class="right d-flex justify-content-end">
-		<p><span class="authLink"><a (click)="authComingSoon()">Login</a></span> or <span class="authLink"><a (click)="authComingSoon()">Register</a></span></p>
+		<p><span class="authLink"><a (click)="openModal(template)">Login</a></span> or <span class="authLink"><a (click)="openModal(template)">Register</a></span></p>
 	</div>
 </nav>
 
 <!-- Temporary Auth Modal - Begins here -->
-<!-- <ng-template #template>
-  <div class="modal-header">
-    <h4 class="modal-title pull-left">Modal</h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-      <span aria-hidden="true">&times;</span>
-    </button>
+<ng-template #template class="loginModal">
+  <div class="loginModal">
+    <div class="close-button d-flex flex-row justify-content-end">
+      <button type="button" class="close align-self-end" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>We are sorry, this feature isn't avaible yet</p>
+    </div>
   </div>
-  <div class="modal-body">
-    This is a modal.
-  </div>
-</ng-template> -->
-<!-- Temporary Auth Modal - Ends here -->
+</ng-template>
