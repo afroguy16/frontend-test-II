@@ -1,4 +1,4 @@
-<div class="chat-wrapper">
+<div id="chatWrapper" class="chat-wrapper">
 	<div class="messages d-flex flex-column align-items-end">
 		<ul>
 			<li *ngFor="let message of messages">
@@ -14,6 +14,7 @@
 		</ul>
 	</div>
 </div>
+<!-- Text message form begins here -->
 <div class="chat-form">
 	<form (ngSubmit)="onSubmitText(f)" #f="ngForm" *ngIf="textFormOn">
 		<div class="input-group messageInput">
@@ -29,13 +30,17 @@
 		</div>
 	</form>
 </div>
+<!-- Text message form ends here -->
+<!-- GIF form search - Begins here -->
 <div class="gyWrapper" *ngIf="giphySearchFormOn">
+	<!-- Image display area - Begins here -->
 	<div id="gyPicturesId" class="gyPictures hideGyPictures">
+		<!-- Image select area - Begins here -->
 		<form class="gyPictureSelectForm" (ngSubmit)="onSubMitGiphy(cF);toggleGiphyPicturesActive('gyPicturesId');giphySearchButtonToggle();textFormSwitch()" #cF="ngForm" >
 			<span *ngFor="let gyImage of gyImages">
 				<input 
 				  type="radio" name="selectedImage" 
-				  id="{{ gyImage.imageSlug }}" value="{{ gyImage.imageUrl }}" class="input-hidden" ngModel/>
+				  id="{{ gyImage.imageSlug }}" value="{{ gyImage.imageUrl }}" class="input-hidden" ngModel required />
 				<label for="{{ gyImage.imageSlug }}">
 				  <img 
 				    src="{{ gyImage.imageUrl }}" 
@@ -44,7 +49,10 @@
 			</span>
 			<button class="btn button-primary sendButton" type="submit" [disabled]="!cF.valid">Send</button>
 		</form>
+		<!-- Image select area - Ends here -->
 	</div>
+	<!-- Image display area - Ends here -->
+	<!-- Search form area - Begins here -->
 	<form (ngSubmit)="onGiphySearchSubmit(sF)" #sF="ngForm" >
 		<div class="input-group messageInput">
 		  <input type="text" class="form-control" placeholder="Search for GIF e.g 'happy'" aria-label="Search Giphy Image" aria-describedby="basic-addon2" name="giphyImageSearch" ngModel required>
@@ -73,4 +81,6 @@
 		  </div>
 		</div>
 	</form>
+	<!-- Search form area - Ends here -->
 </div>
+<!-- GIF form search - Ends here -->

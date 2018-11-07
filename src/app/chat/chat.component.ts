@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import * as Giphy from 'giphy-js-sdk-core';
 
@@ -11,7 +11,8 @@ import * as API from '../api';
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.scss']
 })
-export class ChatComponent implements OnInit {
+export class ChatComponent implements AfterViewInit {
+  chatContainer: HTMLElement;
   giphySearchFormOn = false;
   textFormOn = true;
   giphySearchButton = true;
@@ -23,7 +24,14 @@ export class ChatComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  ngAfterViewInit() {
+    this.chatContainer = document.getElementById('chatWrapper');
+    this.scrollMessage();
+         
+  }
+
+  scrollMessage() {
+    this.chatContainer.scrollTop = this.chatContainer.scrollHeight;
   }
 
   // A switch that sets the giphy search form on and off
@@ -51,6 +59,7 @@ export class ChatComponent implements OnInit {
   // A function that adds a new message to the messages array
   addMessage(messageToAdd) {
     this.messages.push(messageToAdd);
+    this.scrollMessage();
   }
 
   // A function that takes a message from the text message form and adds it to the message array
