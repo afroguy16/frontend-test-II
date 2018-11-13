@@ -1,3 +1,3 @@
 export class GiphyImage {
-	constructor(public imgTitle: string, public imageSlug: string, public imageUrl: string) {}
+	constructor(public imageTitle: string, public imageSlug: string, public imageUrl: string) {}
 }

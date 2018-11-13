@@ -44,7 +44,7 @@ nav {
 	}
 }
 
-.loginModal {
+.authModal {
 	.close-button {
 		button {
 			height: 30px;
@@ -68,7 +68,7 @@ nav {
 }
 
 @include breakpoint(mobile) {
-	.loginModal {
+	.authModal {
 		.close-button {
 			button {
 				margin-top: 0;

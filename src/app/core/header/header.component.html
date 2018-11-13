@@ -3,20 +3,68 @@
 		<h1 class="gyChatBrandIcon"><a routerLink="/">GiphyChat</a></h1>
 	</div>
 	<div class="right d-flex justify-content-end">
-		<p><span class="authLink"><a (click)="openModal(template)">Login</a></span> or <span class="authLink"><a (click)="openModal(template)">Register</a></span></p>
+		<p><span class="authLink"><a (click)="openModal(template);turnonLoginForm()">Login</a></span> or <span class="authLink"><a (click)="openModal(template);turnonSignupForm()">Register</a></span></p>
 	</div>
 </nav>
 
 <!-- Temporary Auth Modal - Begins here -->
-<ng-template #template class="loginModal">
-  <div class="loginModal">
+<ng-template #template>
+  <div class="authModal">
     <div class="close-button d-flex flex-row justify-content-end">
       <button type="button" class="close align-self-end" aria-label="Close" (click)="modalRef.hide()">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
-    <div class="modal-body">
-      <p>We are sorry, this feature isn't avaible yet</p>
+
+    <div class="invalidCommand" *ngIf="!loginForm && !signupForm && !signupSuccess">
+      <p>That's an invalid command</p>
     </div>
+
+    <!-- Login Form     -->
+    <div class="modal-body loginForm" *ngIf="loginForm">
+      <div class="header">
+        <h2>Login</h2>
+      </div>
+      <form (ngSubmit)="onLogin(lF)" #lF="ngForm">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="Enter email" class="form-control" ngModel name="email" required #email="ngModel" email>
+          <span *ngIf="!email.valid && email.touched" class="help-block">Please enter a valid email!</span>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Enter password" class="form-control" ngModel name="password" required #password="ngModel">
+          <span *ngIf="!password.valid && password.touched" class="help-block">Please enter a valid password!</span>
+        </div>
+        <button class="btn button-primary" [disabled]="!lF.valid">Login</button>
+      </form>
+      <p>Don't have an account? <a (click)="turnonSignupForm()">Signup</a></p>
+    </div>
+
+    <!-- Signup Form -->
+    <div class="modal-body loginForm" *ngIf="signupForm">
+      <div class="header">
+        <h2>Create an Account</h2>
+      </div>
+      <form (ngSubmit)="onSignup(sF)" #sF="ngForm">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="Enter email" class="form-control" ngModel name="email" required #email="ngModel" email>
+          <span *ngIf="!email.valid && email.touched" class="help-block">Please enter a valid email!</span>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Enter password" class="form-control" ngModel name="password" required #password="ngModel">
+          <span *ngIf="!password.valid && password.touched" class="help-block">Please enter a valid password!</span>
+        </div>
+        <button class="btn button-primary">Signup</button>
+      </form>
+      <p>Already have an account? <a (click)="turnonLoginForm()">Login</a></p>
+    </div>
+
+    <div class="invalidCommand" *ngIf="signupSuccess">
+      <p>Congratulations, sign up was successful. You can now start chatting.</p>
+    </div>
+
   </div>
 </ng-template>

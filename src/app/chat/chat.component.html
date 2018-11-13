@@ -6,10 +6,10 @@
 					<span class="message align-self-end">{{ message.messageText }}</span>
 					<span class="messageTime align-self-end">{{ message.messageDate | date:'shortTime' }}</span>
 				</p>
-				<p class="d-inline-flex messageWithImage" *ngIf="message.messageImage">
-					<span class="message align-self-end" ><img class="img-fluid" src="{{ message.messageImage.selectedImage }}" alt="{{ message.messageImage.title }}"></span>
+				<!-- <p class="d-inline-flex messageWithImage" *ngIf="(message.messageImage | json) != '{}' || !message.hasOwnProperty(messageImage)">
+					<span class="message align-self-end" ><img class="img-fluid" src="{{ message.messageImage.imageUrl }}" alt="{{ message.messageImage.imageTitle }}"></span>
 					<span class="messageTime align-self-end">{{ message.messageDate | date:'shortTime' }}</span>
-				</p>
+				</p> -->
 			</li>
 		</ul>
 	</div>
@@ -36,7 +36,7 @@
 	<!-- Image display area - Begins here -->
 	<div id="gyPicturesId" class="gyPictures hideGyPictures">
 		<!-- Image select area - Begins here -->
-		<form class="gyPictureSelectForm" (ngSubmit)="onSubMitGiphy(cF);toggleGiphyPicturesActive('gyPicturesId');giphySearchButtonToggle();textFormSwitch()" #cF="ngForm" >
+		<form class="gyPictureSelectForm" (ngSubmit)="onSubMitGiphy(cF);toggleGiphyPicturesActive('gyPicturesId');giphySearchButtonToggle();textFormSwitch()" #cF="ngForm" *ngIf="!gyError">
 			<span *ngFor="let gyImage of gyImages">
 				<input 
 				  type="radio" name="selectedImage" 
@@ -48,7 +48,12 @@
 				</label>
 			</span>
 			<button class="btn button-primary sendButton" type="submit" [disabled]="!cF.valid">Send</button>
+			<button class="btn button-danger sendButton" type="button" (click)="toggleGiphyPicturesActive('gyPicturesId')">Cancel</button>
 		</form>
+		<div class="gyError" *ngIf="gyError">
+			<p>Please check your internet connection</p>
+			<button class="btn button-primary sendButton" type="button" (click)="toggleGiphyPicturesActive('gyPicturesId')">Retry</button>
+		</div>
 		<!-- Image select area - Ends here -->
 	</div>
 	<!-- Image display area - Ends here -->
